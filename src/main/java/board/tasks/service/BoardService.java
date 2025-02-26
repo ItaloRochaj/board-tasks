@@ -1,11 +1,15 @@
 package board.tasks.service;
 
+import board.tasks.persistence.dao.BoardColumnDAO;
 import board.tasks.persistence.dao.BoardDAO;
+import board.tasks.persistence.entity.BoardColumnEntity;
 import board.tasks.persistence.entity.BoardEntity;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class BoardService {
@@ -14,8 +18,17 @@ public class BoardService {
 
     public BoardEntity insert(final BoardEntity entity) throws SQLException {
         var dao = new BoardDAO(connection);
-        try{
+        var boardColumnDAO = new BoardColumnDAO(connection);
+        try {
             dao.insert(entity);
+            List<BoardColumnEntity> columns = entity.getBoardColumns().stream().map(c -> {
+                c.setBoard(entity);
+                return c;
+            }).toList();;
+            for (var column: columns){
+                boardColumnDAO.insert(column);
+            }
+        connection.commit();
         } catch (SQLException e) {
             connection.rollback();
             throw e;
