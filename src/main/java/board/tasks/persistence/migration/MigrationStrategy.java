@@ -4,8 +4,6 @@ import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
-import lombok.AllArgsConstructor;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -14,13 +12,14 @@ import java.sql.SQLException;
 
 import static board.tasks.persistence.config.ConnectionConfig.getConnection;
 
-@AllArgsConstructor
 public class MigrationStrategy {
+    private final Connection connection;
 
     public MigrationStrategy(Connection connection) {
+        this.connection = connection;
     }
 
-    public void executeMigration() {
+    public void executeMigration() throws SQLException {
 
         var originalOut = System.out;
         var originalErr = System.err;
