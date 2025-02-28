@@ -22,6 +22,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.liquibase:liquibase-core:4.29.1'
 	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.apache.commons:commons-csv:1.10.0'
+	implementation 'com.itextpdf:itext7-core:7.2.2'
 
 	// Lombok
 	implementation 'org.projectlombok:lombok:1.18.34'
@@ -33,7 +35,11 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
 }
 
-
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Adicionando a opção para compilar com -Xlint:deprecation
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-Xlint:deprecation"
 }
