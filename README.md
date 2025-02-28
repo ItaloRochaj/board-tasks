@@ -1,6 +1,6 @@
 ## ☕ Criando seu Board de Tarefas com Java
 
-Este repositório corresponde ao Desafio #02 da [Bootcamp Decola Tech 2025](https://www.dio.me/bootcamp/decola-tech-2025) para fornecer instruções sobre como construir um board de tarefas em utilizando Java 17, Spring 3 e MySQL, incluindo como melhoria, funcionalidade de saída para exportação dos dados em arquivo PDF. 
+Este repositório corresponde ao Desafio #02 da [Bootcamp Decola Tech 2025](https://www.dio.me/bootcamp/decola-tech-2025) para fornecer instruções sobre como construir um board de tarefas utilizando Java 17, Spring 3 e MySQL, incluindo como melhoria, funcionalidade de saída para exportação dos dados em arquivo PDF. 
 
 > ⚠️ **Nota:** [projeto original da DIO](https://github.com/digitalinnovationone/board.git).
 
